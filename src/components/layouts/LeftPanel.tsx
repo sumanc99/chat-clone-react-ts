@@ -5,7 +5,7 @@ import SearchBar from "../SearchBar"
 
 function LeftPanel() {
   return (
-     <div className="border-r border-l  w-[35%] p-3 flex flex-col gap-1 min-h-0">
+     <div className=" border-r w-[35%] p-3 flex flex-col gap-1 min-h-0">
         {/* left panel bar */}
         <LeftPanelBar/>
         {/* search bar */}

@@ -3,7 +3,7 @@ import { MessageSquareText, Phone, CircleDotDashed,
 
 function SideBar(){
     return(
-        <div className="flex flex-col gap-5 p-2 justify-between">
+        <div className="border-r flex flex-col gap-5 p-2 justify-between">
             {/* top */}
             <div className="flex flex-col items-center gap-5">
                 
