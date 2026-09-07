@@ -4,17 +4,28 @@ import { Badge } from "./ui/badge"
 
 
 interface ChatTileProps{
+    id:number
     name:string
     message:string
     time:string
     unreadCount?:number
     isDelivered?:boolean
-    isActive?:boolean
+    // isActive?:boolean
+    selectedChatId : number|null
+    onSelectChat:(id:number)=>void
 }
 
-function ChatTile({name,isActive,message,time,unreadCount,isDelivered}:ChatTileProps){
+
+function ChatTile(
+    {
+        name,message,time,
+        unreadCount,isDelivered,id,onSelectChat,selectedChatId
+    }:ChatTileProps){
+        const isActive = selectedChatId === id;
     return(
+        
         <div
+        onClick={()=> onSelectChat(id)}
         className={`flex items-center gap-3 p-3 rounded-lg cursor-pointer transition-colors 
             ${isActive ? "bg-accent" : "hover:bg-muted/50"}`}>
             <Avatar className="h-12 w-12 flex-shrink-0">

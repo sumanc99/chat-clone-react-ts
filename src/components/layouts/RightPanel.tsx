@@ -2,13 +2,10 @@ import { Bot, FileText, Laptop, UserPlus, Video } from "lucide-react"
 import { Button } from "../ui/button"
 import RightPanelHero from "../RightPanelHero"
 
-function RightPanel() {
+function RightPanel({selectedChatId}: {selectedChatId:number|null}) {
    return(
         <div className="flex-1 p-2 flex flex-col items-center">
-            {/* <div className="flex-1 flex flex-col justify-between items-center h-full p-8 bg-muted/20">
-            
-            </div> */}
-
+           <p>you are on (chatid: {selectedChatId}) </p>
         {/* Hero Feature Card */}
         <RightPanelHero/>
 

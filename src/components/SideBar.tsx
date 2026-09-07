@@ -1,13 +1,17 @@
 import { MessageSquareText, Phone, CircleDotDashed, 
     MessageCircleMore, Users,BadgeCheck,Images,CircleUser} from "lucide-react"
+import { Link } from "react-router-dom"
 
 function SideBar(){
     return(
         <div className="border-r flex flex-col gap-5 p-2 justify-between">
             {/* top */}
             <div className="flex flex-col items-center gap-5">
-                
-            <MessageSquareText/>
+            
+            <Link to='/'>
+                <MessageSquareText/>
+            </Link>
+            
             <Phone/>
             <CircleDotDashed/>
             <MessageCircleMore/>
