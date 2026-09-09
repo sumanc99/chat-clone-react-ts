@@ -22,7 +22,7 @@ function MessageBubble({message}:{message:Message}) {
               minute: "2-digit",
             })}
           </span>
-          {isMe && message.isDelivered && <CheckCheck className="h-3 w-3" />}
+          {isMe && message.isDelivered && <CheckCheck className="h-4 w-4 text-sky-300" />}
         </div>
       </div>
     </div>

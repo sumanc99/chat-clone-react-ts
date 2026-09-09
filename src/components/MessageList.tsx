@@ -1,12 +1,17 @@
 import { dummyMessages } from "@/data/dummyMessages"
 import MessageBubble from "./MessageBubble";
 import { useEffect, useRef } from "react";
+import type { Message } from "@/interfaces/Message";
 
+interface MessageListProps{
+  chatId:number
+  messages:Message[]
+}
 
-function MessageList({chatId}:{chatId:number}){
+function MessageList({chatId,messages}:MessageListProps){
 
      const bottomRef = useRef<HTMLDivElement>(null);
-     const messages = dummyMessages.filter((msg)=> msg.chatId === chatId);
+     const ActiveUserMessages = messages.filter((msg)=> msg.chatId === chatId);
      
      // scroll to newest message whenever the chat or messages change
        useEffect(() => {
@@ -18,7 +23,7 @@ function MessageList({chatId}:{chatId:number}){
       scrollbar-thin 
       scrollbar-thumb-gray-600 
       scrollbar-track-transparent gap-2">
-         {messages.map((msg)=>(<MessageBubble key={msg.id} message={msg}/>))}
+         {ActiveUserMessages.map((msg)=>(<MessageBubble key={msg.id} message={msg}/>))}
         <div ref={bottomRef} />
       </div>
     )

@@ -1,22 +1,29 @@
-import { Bot, FileText, Laptop, UserPlus, Video } from "lucide-react"
-import { Button } from "../ui/button"
+import { Bot, FileText,UserPlus, Video } from "lucide-react"
+// import { Button } from "../ui/button"
 import RightPanelHero from "../RightPanelHero"
 import ActiveChat from "../ActiveChat"
+import type { Message } from "@/interfaces/Message"
 
 interface RightPanelProps{
   selectedChatId:number|null
   selectedChatName:string|null
+  messages: Message[];
+  onSendMessage: (msg:Message)=>void
 }
 
-function RightPanel({selectedChatId,selectedChatName}: RightPanelProps) {
+function RightPanel({selectedChatId,selectedChatName,onSendMessage,messages}: RightPanelProps) {
    if(selectedChatId!=null){
       return(
-        <ActiveChat selectedChatName={selectedChatName} chatId={selectedChatId}/>
+        <ActiveChat 
+          selectedChatName={selectedChatName} 
+          chatId={selectedChatId}
+          messages={messages}
+          onSendMessage={onSendMessage}
+        />
       )
    }
    return(
         <div className="flex-1 p-2 flex flex-col items-center border min-h-0">
-        <p>you are on (chatid: {selectedChatId}) </p>
         {/* Hero Feature Card */}
         <RightPanelHero/>
 

@@ -1,22 +1,28 @@
+import { useState } from "react"
 import ActiveChatHeader from "./ActiveChatHeader"
+import MessageInput from "./MessageInput"
 import MessageList from "./MessageList"
+import type { Message } from "@/interfaces/Message"
+import { dummyMessages } from "@/data/dummyMessages"
 
 
 interface ActiveChatProps{
   selectedChatName:string|null
   chatId:number
+  messages:Message[]
+  onSendMessage: (msg:Message)=>void
 }
-function ActiveChat({ selectedChatName, chatId}:ActiveChatProps) {
+function ActiveChat({ selectedChatName, chatId, messages, onSendMessage}:ActiveChatProps) {
+
+   
   return (
     <div className="flex-1 flex flex-col min-h-0 p-2  ">
       {/* chat header */}
       <ActiveChatHeader selectedChatName={selectedChatName}/>
       {/* message list */}
-      <MessageList chatId={chatId}/>
+      <MessageList chatId={chatId} messages={messages}/>
       {/* message input */}
-       <div className="border flex-1 min-h-0 ">
-
-      </div>
+           <MessageInput currentChatId={chatId} onSendMessage={onSendMessage} />
     </div>
   )
 }
