@@ -1,4 +1,4 @@
-import type { Message } from "@/types/Message";
+import type { Message } from "@/interfaces/Message";
 
 
 export const dummyMessages: Message[] = [

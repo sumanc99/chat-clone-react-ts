@@ -18,8 +18,6 @@ function MessageList({chatId}:{chatId:number}){
       scrollbar-thin 
       scrollbar-thumb-gray-600 
       scrollbar-track-transparent gap-2">
-
-
          {messages.map((msg)=>(<MessageBubble key={msg.id} message={msg}/>))}
         <div ref={bottomRef} />
       </div>

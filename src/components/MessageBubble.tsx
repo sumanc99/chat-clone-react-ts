@@ -1,4 +1,4 @@
-import type { Message } from "@/types/Message";
+import type { Message } from "@/interfaces/Message";
 import { CheckCheck } from "lucide-react";
 
 
