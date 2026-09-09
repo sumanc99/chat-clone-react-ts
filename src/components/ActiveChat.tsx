@@ -1,34 +1,31 @@
-import { CheckCheck } from "lucide-react"
-import { Avatar, AvatarFallback } from "./ui/avatar"
-import { Badge } from "./ui/badge"
+import ActiveChatHeader from "./ActiveChatHeader"
+import MessageList from "./MessageList"
 
 
-interface ChatTileProps{
-    id:number
-    name:string
-    message:string
-    time:string
-    unreadCount?:number
-    isDelivered?:boolean
-    // isActive?:boolean
-    selectedChatId : number|null
-    onSelectChat:(id:number)=>void
-    onSelectChatName:(name:string)=>void;
+interface ActiveChatProps{
+  selectedChatName:string|null
+  chatId:number
+}
+function ActiveChat({ selectedChatName, chatId}:ActiveChatProps) {
+  return (
+    <div className="flex-1 flex flex-col min-h-0 p-2  ">
+      {/* chat header */}
+      <ActiveChatHeader selectedChatName={selectedChatName}/>
+      {/* message list */}
+      <MessageList chatId={chatId}/>
+      {/* message input */}
+       <div className="border flex-1 min-h-0 ">
+
+      </div>
+    </div>
+  )
 }
 
+export default ActiveChat
 
-function ChatTile(
-    {
-        name,message,time,
-        unreadCount,isDelivered,
-        id,onSelectChat,selectedChatId,
-        onSelectChatName
-    }:ChatTileProps){
-        const isActive = selectedChatId === id;
-    return(
-        
-        <div
-        onClick={()=> {onSelectChat(id); onSelectChatName(name)}}
+
+{/* <div
+        onClick={()=> onSelectChat(id)}
         className={`flex items-center gap-3 p-3 rounded-lg cursor-pointer transition-colors 
             ${isActive ? "bg-accent" : "hover:bg-muted/50"}`}>
             <Avatar className="h-12 w-12 flex-shrink-0">
@@ -58,9 +55,4 @@ function ChatTile(
 
                 </div>
             </div>
-        </div>
-    )
-}
-
-
-export default ChatTile
+        </div> */}
