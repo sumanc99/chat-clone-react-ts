@@ -1,6 +1,7 @@
 import { CheckCheck } from "lucide-react"
 import { Avatar, AvatarFallback } from "./ui/avatar"
 import { Badge } from "./ui/badge"
+import { useChatStore } from "@/store/chatStore"
 
 
 interface ChatTileProps{
@@ -11,9 +12,6 @@ interface ChatTileProps{
     unreadCount?:number
     isDelivered?:boolean
     // isActive?:boolean
-    selectedChatId : number|null
-    onSelectChat:(id:number)=>void
-    onSelectChatName:(name:string)=>void;
 }
 
 
@@ -21,14 +19,17 @@ function ChatTile(
     {
         name,message,time,
         unreadCount,isDelivered,
-        id,onSelectChat,selectedChatId,
-        onSelectChatName
+        id
     }:ChatTileProps){
+        const selectedChatId = useChatStore((state)=> state.selectedChatId);
+        const setSelectedChatId = useChatStore((state)=> state.setSelectedChatId);
+        const setSelectedChatName = useChatStore((state)=> state.setSelectedChatName);
         const isActive = selectedChatId === id;
+
     return(
         
         <div
-        onClick={()=> {onSelectChat(id); onSelectChatName(name)}}
+        onClick={()=> {setSelectedChatId(id); setSelectedChatName(name)}}
         className={`flex items-center gap-3 p-3 rounded-lg cursor-pointer transition-colors 
             ${isActive ? "bg-accent" : "hover:bg-muted/50"}`}>
             <Avatar className="h-12 w-12 flex-shrink-0">

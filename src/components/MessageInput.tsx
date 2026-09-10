@@ -1,14 +1,12 @@
-import type { Message } from "@/interfaces/Message";
+import { useChatStore } from "@/store/chatStore";
 import { useState } from "react"
 
 
-interface MessageInputProps{
-    currentChatId:number
-    onSendMessage:(msg:Message)=>void
-}
 
-function MessageInput({currentChatId,onSendMessage}:MessageInputProps) {
 
+function MessageInput() {
+     const onSendMessage = useChatStore((state)=> state.sendMessage);
+    const currentChatId = useChatStore((state)=>state.selectedChatId)
     const [userInput, setUserInput] = useState("");
 
     function handleSend(){

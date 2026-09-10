@@ -1,25 +1,17 @@
 import { Bot, FileText,UserPlus, Video } from "lucide-react"
-// import { Button } from "../ui/button"
 import RightPanelHero from "../RightPanelHero"
 import ActiveChat from "../ActiveChat"
-import type { Message } from "@/interfaces/Message"
+import { useChatStore } from "@/store/chatStore"
 
-interface RightPanelProps{
-  selectedChatId:number|null
-  selectedChatName:string|null
-  messages: Message[];
-  onSendMessage: (msg:Message)=>void
-}
 
-function RightPanel({selectedChatId,selectedChatName,onSendMessage,messages}: RightPanelProps) {
+
+function RightPanel() {
+
+  const selectedChatId = useChatStore((state)=> state.selectedChatId);
+
    if(selectedChatId!=null){
       return(
-        <ActiveChat 
-          selectedChatName={selectedChatName} 
-          chatId={selectedChatId}
-          messages={messages}
-          onSendMessage={onSendMessage}
-        />
+        <ActiveChat/>
       )
    }
    return(

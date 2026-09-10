@@ -1,14 +1,13 @@
-import { dummyMessages } from "@/data/dummyMessages"
 import MessageBubble from "./MessageBubble";
 import { useEffect, useRef } from "react";
-import type { Message } from "@/interfaces/Message";
+import { useChatStore } from "@/store/chatStore";
 
-interface MessageListProps{
-  chatId:number
-  messages:Message[]
-}
 
-function MessageList({chatId,messages}:MessageListProps){
+function MessageList(){
+
+     const messages = useChatStore((state)=> state.messages);
+
+    const chatId = useChatStore((state)=> state.selectedChatId);
 
      const bottomRef = useRef<HTMLDivElement>(null);
      const ActiveUserMessages = messages.filter((msg)=> msg.chatId === chatId);

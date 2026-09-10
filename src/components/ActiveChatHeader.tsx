@@ -1,7 +1,9 @@
 import { EllipsisVertical, Phone, Search, Video } from "lucide-react"
 import { Avatar, AvatarFallback } from "./ui/avatar"
+import { useChatStore } from "@/store/chatStore"
 
-function ActiveChatHeader({ selectedChatName}:{ selectedChatName:string|null}) {
+function ActiveChatHeader() {
+  const selectedChatName = useChatStore((state)=> state.selectedChatName);
   return (
     // sticky top-0 z-10
      <div className="p-2 flex flex-row shadow-md  items-center justify-between gap-2 bg-muted/30">
